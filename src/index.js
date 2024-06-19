@@ -49,7 +49,7 @@ app.post('/signup', async (req, res) => {
     const checking = await LogInCollection.findOne({ name: req.body.name })
 
    try{
-    if (checking.name === req.body.name && checking.password===req.body.password) {
+    if (checking && (checking.name === req.body.name && checking.password===req.body.password)) {
         res.send("user details already exists")
     }
     else{
